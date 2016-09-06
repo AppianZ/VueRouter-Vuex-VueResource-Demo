@@ -1,7 +1,9 @@
 # VueRouter-Vuex-VueResource-Demo
 
 > **前端框架使用Vue**
+
 > **Vue全家桶VueRouter-Vuex-VueResource**
+
 > **使用apidoc生成文档,使用eslint进行代码质量检测**
 
 ```
