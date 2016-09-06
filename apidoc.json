@@ -1,0 +1,9 @@
+{
+  "name": "demo",
+  "version": "2.0.0",
+  "description": "",
+  "apidoc": {
+    "title": "Demo api doc",
+    "url" : "https://api.github.com/v2"
+  }
+}

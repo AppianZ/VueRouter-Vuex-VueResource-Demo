@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="screen-orientation" content="portrait">
+  <title>熊猫书院后台管理2</title>
+  <style>
+    .view {
+      transition: all .2s ease;
+    }
+    .test-enter {
+      opacity: 0;
+      transform: translate3d(130px, 0, 0);
+    }
+    .test-leave {
+      opacity: 0;
+      transform: translate3d(130px, 0, 0);
+    }
+    .v-link-active {
+      color: rgb(68, 68, 68);
+    }
+    [v-cloak] {
+      display: none;
+    }
+    #app {
+      height: 100%;
+      min-width: 950px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header id="header">
+      <div id="logo" @click="homepage">
+        <span class="iconfont">&#xe600;</span>
+        <b>PandaCollege</b>
+      </div>
+      <div id="menu">
+        <span class="iconfont" @click="hide">&#xe602;</span>
+      </div>
+      <div id="managerInfo">
+        <select id="termSelect"  @change="change" v-model="termSelect">
+          <option v-for="op in optionArr"
+                  :value="op.id"
+                  v-text="op.name"></option>
+        </select>
+        第二版，<b>Forchange</b>.
+        <a @click="signout">SIGN OUT</a>
+      </div>
+    </header>
+    <article id="article">
+      <nav id="nav">
+        <section id="sea-box">
+          <p>
+            <input id="seaInput" placeholder="暂无搜索功能">
+            <span class="iconfont">&#xe609;</span>
+          </p>
+        </section>
+        <section id="nav-box">
+          <ul>
+            <li v-for="el in navlist">
+              <p class="title" @click="click(el.index)"
+                 :class="{'pselect' : status[el.index]}">
+                <span class="iconfont" v-html="el.icon"></span>
+                <i v-text="el.first"></i>
+                <span class="iconfont left"
+                      :class="{'down' : status[el.index]}">&#xe60a;</span>
+              </p>
+              <p v-for="s in el.second"
+                 :class="{'limitHeight' : !status[el.index]}">
+                <a v-link="{path : s.link}">
+                  <span class="iconfont">&#xe606;</span>
+                  <b v-text="s.name"></b>
+                </a>
+              </p>
+            </li>
+          </ul>
+        </section>
+      </nav>
+      <div id="content">
+        <router-view class="view" transition="test" transition-mode="out-in"></router-view>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
